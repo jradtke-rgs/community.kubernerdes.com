@@ -1,4 +1,4 @@
-# RGS Security (NeuVector) Demo Walkthrough: Monitor → Protect Mode
+# SUSE Security (NeuVector) Demo Walkthrough: Monitor → Protect Mode
 
 ## Status
 This demo guide is still a work in progress.  Technically everything works - still need to build the order of operations and "tighten up" what you click on, and what you will see for names, etc..

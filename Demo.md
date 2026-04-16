@@ -10,7 +10,7 @@ A guided walkthrough for deploying Harvester and standing up the initial environ
 | IPs | One static IP per node (recommended over DHCP) |
 | DHCP | Optional — only needed if not using static IPs |
 | DNS | Working DNS environment; you'll need the DNS server IPs |
-| Harvester Image | Community ISO from [GitHub Releases](https://github.com/harvester/harvester/releases), or pulled via Carbide |
+| Harvester Image | Community ISO from [GitHub Releases](https://github.com/harvester/harvester/releases) |
 | Cloud Images | Vendor-provided QCOW2 images, or custom-built (typically for Windows VMs) |
 | Password | Credentials for console and SSH access to hosts |
 | Cluster Token | Shared passphrase used by nodes to join the Harvester cluster |
@@ -43,7 +43,6 @@ A guided walkthrough for deploying Harvester and standing up the initial environ
 
 ## Airgap Installation
 
-- **Carbide Portal** — access and download software from RGS
 - **Hauler** — CLI tool for pulling and packaging software assets for air-gapped distribution
 
 ---

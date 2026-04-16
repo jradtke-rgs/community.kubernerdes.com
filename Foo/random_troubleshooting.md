@@ -172,17 +172,17 @@ kubectl exec -i -t dnsutils -- nslookup kubernetes.default
 
 ---
 
-## Hauler — Query Carbide Registry Tags
+## Hauler — Query Registry Tags
 
-List available tags for Rancher-related images in the Carbide registry:
+List available tags for Rancher-related images in a registry:
 
 ```bash
 source ~/.hauler/credentials && for repo in rancher/rancher rancher/shell rancher/fleet rancher/webhook \
-   rancher/rancher-agent rancher/system-agent carbide/nginx-html-base nginx-html-base rancher/mirrored-nginx \
+   rancher/rancher-agent rancher/system-agent rancher/mirrored-nginx \
    rancher/hardened-nginx; do TOKEN=$(curl -s -u “${HAULER_USER}:${HAULER_PASSWORD}” \
-   “https://rgcrprod.azurecr.us/oauth2/token?service=rgcrprod.azurecr.us&scope=repository:${repo}:pull” | python3 -c \
+   “${REGISTRY_URL}/oauth2/token?service=${REGISTRY_HOST}&scope=repository:${repo}:pull” | python3 -c \
     “import sys,json; print(json.load(sys.stdin).get(‘access_token’,’’))”) && RESULT=$(curl -s -w “\n%{http_code}” \
-   -H “Authorization: Bearer $TOKEN” “https://rgcrprod.azurecr.us/v2/${repo}/tags/list”) && CODE=$(echo “$RESULT” | \
+   -H “Authorization: Bearer $TOKEN” “${REGISTRY_URL}/v2/${repo}/tags/list”) && CODE=$(echo “$RESULT” | \
    tail -1) && BODY=$(echo “$RESULT” | head -1) && if [ “$CODE” = “200” ]; then echo “FOUND: $repo”; echo “  Tags: \
    $(echo $BODY | python3 -c “import sys,json; tags=json.load(sys.stdin).get(‘tags’,[]); print(‘, \
    ‘.join(tags[:10]))”) ...”; fi; done

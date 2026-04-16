@@ -1,4 +1,4 @@
-# 20_install_RGS_security.sh — Deploy SUSE Security (NeuVector) on the apps cluster
+# 20_install_security.sh — Deploy SUSE Security (NeuVector) on the apps cluster
 #
 # Not intended to be run as a script — cut and paste sections as needed.
 # Run from the admin node (nuc-00) with KUBECONFIG pointing to the

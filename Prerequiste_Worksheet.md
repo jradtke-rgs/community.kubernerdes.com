@@ -9,7 +9,6 @@ Information you should collect prior to creating your environment.
 | harvester Node 2       | x.x.y.y    | |
 | harvester Node 3       | x.x.y.y    | |
 | top level domain (TLD) |            | |  
-| Carbide Portal Key     | (hash)     | |
 | HAULER_USER            |            | | 
 | HAULER_PASSWORD        |            | | 
 

@@ -1,20 +1,17 @@
 # Kubernerdes Homelab
 
-> A self-contained Kubernetes homelab built on Intel NUCs, powered by [Rancher Government Solutions (RGS)](https://ranchergovernment.com/) Carbide.
+> A self-contained Kubernetes homelab built on Intel NUCs using community Rancher/SUSE components.
 
-This repository contains the architecture overview, scripts, and implementation steps for deploying the RGS stack on small form-factor hardware (Intel NUCs). It is currently a collection of scripts, notes, and references — and will evolve into a more structured guide over time.
+This repository contains the architecture overview, scripts, and implementation steps for deploying the Rancher stack on small form-factor hardware (Intel NUCs). It is currently a collection of scripts, notes, and references — and will evolve into a more structured guide over time.
 
-> **Note:** This is *not* an official RGS repository. It is a personal lab environment designed to explore and demonstrate the platform using straightforward, repeatable methods.
+> **Note:** This is a personal lab environment designed to explore and demonstrate the platform using straightforward, repeatable methods.
 
 **Tips before you dive in:**
 
 * The cloud-native space moves fast. Always verify you are referencing the most current sources — a video published in June 2025 was likely recorded weeks earlier and may already be slightly dated.
-* If you don't yet have a Carbide subscription, you can still follow along using community images. You'll lose some capabilities around hardened image inspection and the Carbide Applications portal, but the core workflow remains the same.
 
 ## Status
-**Status**: Work in Progress (March 2026) - currently shifting focus in this repo from community bits to RGS Carbide bits.
-
-TODO: Add a table/matrix of things that have been migrated from community to carbide.
+**Status**: Work in Progress (April 2026) - using community images and components throughout.
 
 Eventually this repo will be the technical steps and there will be an associated "docs" repo that provides the guidance and details of the tasks and steps provided here.  
 [Documentation Repo](https://github.com/jradtke-rgs/docs.homelab.kubernerdes.com/)   
@@ -22,21 +19,20 @@ Eventually this repo will be the technical steps and there will be an associated
 
 ## Goals
 
-* Build a fundamental understanding of deploying RGS Carbide — from acquisition through roll-out
+* Build a fundamental understanding of deploying Rancher — from acquisition through roll-out
 * Stand up a self-sustaining network homelab consisting of:
   * Infrastructure node hosting DNS and PXE build services
   * 3-node Harvester cluster
   * Rancher Manager Server
-  * RGS Observability stack
-  * RGS Security stack
+  * SUSE Observability stack
+  * SUSE Security stack (NeuVector)
   * Kubernetes cluster for running applications
-  * *Bonus:* Integrated NVIDIA AI hardware with the RGS cloud-native stack
+  * *Bonus:* Integrated NVIDIA AI hardware with the cloud-native stack
 
 ## Day 0 — Design and Plan
 
 **Prerequisites**
 
-* Carbide Portal access — request a license from the RGS Account Team
 * 3 x NUCs (or similar hardware) with identical storage and network interface configurations
 * 1 x admin workstation with keyboard, video, and mouse (I use a fourth NUC)
 * Internet connectivity
@@ -54,12 +50,11 @@ Eventually this repo will be the technical steps and there will be an associated
 
 ## Day 2 — Operate
 
-- Deploy a K8s cluster (`observability`) via RMS, then install **RGS Observability**
+- Deploy a K8s cluster (`observability`) via RMS, then install **SUSE Observability**
 - Connect clusters to the Observability stack
 - Deploy a K8s cluster (`applications`) via RMS using SL-Micro + RKE2
-- Install **RGS Security** (NeuVector) on the `applications` cluster
-- Deploy community vs. Carbide images side-by-side for comparison in NeuVector
-- Deploy test app to demonstrate **RGS Security** capability of monitor vs protect mode
+- Install **SUSE Security** (NeuVector) on the `applications` cluster
+- Deploy test app to demonstrate **SUSE Security** capability of monitor vs protect mode
 - Enable monitoring, explore Grafana dashboards
 - Integrate with external systems and configure RBAC [TBD]
 - Deploy updates via Fleet [TBD]
@@ -84,7 +79,6 @@ While this repo is available via HTTP/S, I will make all the content available o
 
 ### Guides
 
-- [Carbide Portal](https://portal.ranchercarbide.dev/product/)
 - [Hauler — Product Page](https://ranchergovernment.com/products/hauler)
 - [Hauler — Documentation](https://docs.hauler.dev/docs/intro)
 - [Deploy Rancher Manager — Helm CLI Quick Start](https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-rancher-manager/helm-cli)
@@ -98,7 +92,5 @@ While this repo is available via HTTP/S, I will make all the content available o
 ### Videos, Blogs, and Walkthroughs
 
 - [Harvester + Kasm — GPU Passthrough (YouTube)](https://www.youtube.com/watch?v=3tMfc0fUvk4)
-- [Kasm + RGS Partnership — Enterprise Kubernetes-Powered VDI](https://www3-develop.kasmweb.com/alliance-partnership/rancher-government-solutions)
 - [Three Easy-Mode Ways of Installing Rancher onto Harvester](https://ranchergovernment.com/blog/three-easy-mode-ways-of-installing-rancher-onto-harvester)
-- [Rancher Federal Support Portal](https://support.rancherfederal.com/hc/en-us)
 
